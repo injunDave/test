@@ -1,0 +1,1 @@
+web: yarn medusa start
