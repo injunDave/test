@@ -1,1 +1,1 @@
-web: yarn medusa start
+web: npm run build && cd .medusa/server && npm install && npm run start
