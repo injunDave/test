@@ -13,7 +13,7 @@
     "medusa"
   ],
   "scripts": {
-    "build": "babel src -d dist --extensions \".ts,.js\"",
+    "build": "medusa build",
     "seed": "medusa exec ./src/scripts/seed.ts",
     "start": "medusa start",
     "dev": "medusa develop",
