@@ -1,1 +1,1 @@
-web: npm run build && cd .medusa/server && npm install && npm run start
+web: npm run build && npm start
