@@ -5,7 +5,7 @@ const {
   } = require("@medusajs/medusa")
   
   // Use a simplified approach without direct Solana library dependencies
-  class SolanaPaymentProcessor extends AbstractPaymentProcessor {
+  class solanaProvider extends AbstractPaymentProcessor {
     static identifier = "solana-usdc-usdt"
     
     constructor(container, options) {
@@ -243,4 +243,4 @@ const {
     }
   }
   
-  module.exports = SolanaPaymentProcessor
+  module.exports = solanaProvider
