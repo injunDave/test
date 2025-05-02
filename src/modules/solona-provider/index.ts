@@ -2,7 +2,7 @@ const { Connection, PublicKey, Keypair, Transaction } = require('@solana/web3.js
 const { getAssociatedTokenAddress, createTransferCheckedInstruction, TOKEN_PROGRAM_ID } = require('@solana/spl-token');
 const bs58 = require('bs58');
 
-class SolanaPaymentProvider {
+class solanaProvider {
   options: any;
     merchantUsdcWallet: any;
     merchantUsdtWallet: any;
@@ -357,4 +357,4 @@ class SolanaPaymentProvider {
   }
 }
 
-module.exports = SolanaPaymentProvider;
+module.exports = solanaProvider;
