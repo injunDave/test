@@ -1,15 +1,17 @@
+// Use the correct import path for the latest Medusa version
 const { 
-    AbstractPaymentProcessor, 
+    PaymentProcessor, 
     PaymentProcessorError, 
     PaymentSessionStatus 
   } = require("@medusajs/medusa")
   
-  // Use a simplified approach without direct Solana library dependencies
-  class solanaProvider extends AbstractPaymentProcessor {
+  class SolanaPaymentProcessor extends PaymentProcessor {
     static identifier = "solana-usdc-usdt"
     
     constructor(container, options) {
       super(container)
+      
+      this.options_ = options
       
       this.merchantUsdcWallet = options.merchantUsdcWallet
       this.merchantUsdtWallet = options.merchantUsdtWallet
@@ -243,4 +245,4 @@ const {
     }
   }
   
-  module.exports = solanaProvider
+  module.exports = SolanaPaymentProcessor
