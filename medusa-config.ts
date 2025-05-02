@@ -13,6 +13,7 @@ module.exports = defineConfig({
         }
       }
     },
+    
     http: {
       storeCors: process.env.STORE_CORS!,
       adminCors: process.env.ADMIN_CORS!,
@@ -20,5 +21,33 @@ module.exports = defineConfig({
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
-  }
+  },
+  modules: [
+
+    {
+
+      resolve: "@medusajs/medusa/payment",
+
+      options: {
+
+        providers: [
+
+          {
+            resolve: "/src/services/solana-provider",
+            id: "my-payment",
+            options: {
+              merchantUsdcWallet: process.env.SOLANA_MERCHANT_USDC_WALLET,
+              merchantUsdtWallet: process.env.SOLANA_MERCHANT_USDT_WALLET,
+              network: process.env.NODE_ENV === "production" ? "mainnet" : "devnet"
+            }
+
+          }
+
+        ]
+
+      }
+
+    }
+
+  ]
 })
