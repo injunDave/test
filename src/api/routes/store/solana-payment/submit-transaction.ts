@@ -1,5 +1,5 @@
 module.exports = async (req, res) => {
-    const { cart_id, customer_wallet, token_type = "usdc" } = req.body;
+    const { cart_id, customer_wallet, token_type = "usdc", publishable_key } = req.body;
     
     if (!cart_id || !customer_wallet) {
       return res.status(400).json({
@@ -8,6 +8,21 @@ module.exports = async (req, res) => {
     }
     
     try {
+      console.log(`🔄 Processing Solana payment for cart ${cart_id}`);
+      
+      const paymentProviderService = req.scope.resolve("paymentProviderService");
+      const solanaProvider = paymentProviderService.retrieveProvider("solana-usdc-usdt");
+      
+      if (!solanaProvider) {
+        return res.status(404).json({ error: "Solana payment provider not found" });
+      }
+      
+      // Verify the publishable key
+      const settings = solanaProvider.getPaymentProviderSettings();
+      if (publishable_key !== settings.publishableKey) {
+        return res.status(401).json({ error: "Invalid publishable key" });
+      }
+      
       const cartService = req.scope.resolve("cartService");
       const cart = await cartService.retrieve(cart_id);
       
@@ -33,8 +48,10 @@ module.exports = async (req, res) => {
         token_type
       });
       
+      console.log(`✅ Payment processed successfully for cart ${cart_id}`);
       return res.status(200).json({ success: true, data });
     } catch (error) {
+      console.error(`❌ Error processing payment: ${error.message}`);
       return res.status(500).json({
         error: "An error occurred while processing the payment",
         details: error.message
