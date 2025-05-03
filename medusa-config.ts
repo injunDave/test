@@ -33,8 +33,8 @@ module.exports = defineConfig({
         providers: [
 
           {
-            resolve: "./src/modules/solona-provider",
-            id: "solana-provider",
+            resolve: "./src/modules/solona-provider/index.ts",
+            id: "solona-provider",
             options: {
               merchantUsdcWallet: process.env.SOLANA_MERCHANT_USDC_WALLET,
               merchantUsdtWallet: process.env.SOLANA_MERCHANT_USDT_WALLET,

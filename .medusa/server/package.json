@@ -34,7 +34,8 @@
     "@solana/spl-token": "^0.4.13",
     "@solana/web3.js": "^1.98.2",
     "awilix": "^8.0.1",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "uuid": "^11.1.0"
   },
   "devDependencies": {
     "@medusajs/test-utils": "2.7.1",
