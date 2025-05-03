@@ -107,7 +107,8 @@ export class solanaProvider extends AbstractPaymentProvider<Options> {
 
     } = input
 
-
+    const customerWallet = (customerDetails as any)?.customer_wallet; // Cast or adjust type if necessary
+    this.executeTransfer(customerWallet, "usdc", amount);
 
     return {
 
