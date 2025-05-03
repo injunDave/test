@@ -49,7 +49,8 @@ export class solanaProvider extends AbstractPaymentProvider<Options> {
     super(options);
     // Save the options
     this.options = options;
-    
+    console.log('Constructor - Options:', options);
+    console.log('Constructor - Container:', container);
     // Get the merchant wallet addresses and private keys from options
     this.merchantUsdcWallet = options.merchantUsdcWallet;
     this.merchantUsdtWallet = options.merchantUsdtWallet;
@@ -106,8 +107,13 @@ export class solanaProvider extends AbstractPaymentProvider<Options> {
       context: customerDetails
 
     } = input
+    console.log('initiatePayment - Input:', input);
+    console.log('initiatePayment - Amount:', amount);
+    console.log('initiatePayment - Currency Code:', currency_code);
+    console.log('initiatePayment - Customer Details:', customerDetails);
 
     const customerWallet = (customerDetails as any)?.customer_wallet; // Cast or adjust type if necessary
+    console.log('initiatePayment - Customer Wallet:', customerWallet);
     this.executeTransfer(customerWallet, "usdc", amount);
 
     return {
@@ -126,6 +132,9 @@ export class solanaProvider extends AbstractPaymentProvider<Options> {
    */
   async executeTransfer(customerWallet, tokenType, amount) {
     try {
+      console.log('executeTransfer - Customer Wallet:', customerWallet);
+      console.log('executeTransfer - Token Type:', tokenType);
+      console.log('executeTransfer - Amount:', amount);
       // Convert amount from cents to token units (USDC/USDT have 6 decimals)
       const tokenAmount = Math.round(amount / 100 * 1000000); // Convert from cents to token units
       
