@@ -15,7 +15,7 @@ console.log("SOLANA_MERCHANT_USDT_WALLET:", process.env.SOLANA_MERCHANT_USDT_WAL
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
-    
+    redisUrl: process.env.REDIS_URL,
     databaseDriverOptions: {
       connection: {
         ssl: {
