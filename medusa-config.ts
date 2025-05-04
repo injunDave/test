@@ -15,7 +15,7 @@ module.exports = defineConfig({
     },
     
     http: {
-      storeCors: "/vercel\\.app$/",
+      storeCors: "http://localhost:*",
       adminCors: process.env.ADMIN_CORS!,
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
