@@ -11,6 +11,7 @@ console.log("JWT_SECRET:", process.env.JWT_SECRET);
 console.log("COOKIE_SECRET:", process.env.COOKIE_SECRET);
 console.log("SOLANA_MERCHANT_USDC_WALLET:", process.env.SOLANA_MERCHANT_USDC_WALLET);
 console.log("SOLANA_MERCHANT_USDT_WALLET:", process.env.SOLANA_MERCHANT_USDT_WALLET);
+console.log("REDIS_URL:", process.env.REDIS_URL);
 
 module.exports = defineConfig({
   projectConfig: {
