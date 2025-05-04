@@ -2,6 +2,16 @@ import { loadEnv, defineConfig } from '@medusajs/framework/utils'
 
 loadEnv(process.env.NODE_ENV || 'development', process.cwd())
 
+// Log environment variables to Heroku logs
+console.log("Environment Variables:");
+console.log("DATABASE_URL:", process.env.DATABASE_URL);
+console.log("STORE_CORS:", process.env.STORE_CORS);
+console.log("ADMIN_CORS:", process.env.ADMIN_CORS);
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
+console.log("COOKIE_SECRET:", process.env.COOKIE_SECRET);
+console.log("SOLANA_MERCHANT_USDC_WALLET:", process.env.SOLANA_MERCHANT_USDC_WALLET);
+console.log("SOLANA_MERCHANT_USDT_WALLET:", process.env.SOLANA_MERCHANT_USDT_WALLET);
+
 module.exports = defineConfig({
   projectConfig: {
     databaseUrl: process.env.DATABASE_URL,
