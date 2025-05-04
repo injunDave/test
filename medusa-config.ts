@@ -27,9 +27,9 @@ module.exports = defineConfig({
     
     http: {
       // Allow requests from the frontend origin
-      storeCors: process.env.STORE_CORS || "http://localhost:3000",
+      storeCors: process.env.STORE_CORS || "https://dev-virid-seven.vercel.app",
       adminCors: process.env.ADMIN_CORS || "http://localhost:7000",
-      authCors: process.env.STORE_CORS || "http://localhost:3000",
+      authCors: process.env.AUTH_CORS || "http://localhost:3000",
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
