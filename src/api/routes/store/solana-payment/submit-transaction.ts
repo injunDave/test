@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
       console.log(`🔄 Processing Solana payment for cart ${cart_id}`);
       
       const paymentProviderService = req.scope.resolve("paymentProviderService");
-      const solanaProvider = paymentProviderService.retrieveProvider("solana-usdc-usdt");
+      const solanaProvider = paymentProviderService.retrieveProvider("USDC-SOLANA");
       
       if (!solanaProvider) {
         return res.status(404).json({ error: "Solana payment provider not found" });
