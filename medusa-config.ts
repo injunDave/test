@@ -27,18 +27,25 @@ module.exports = defineConfig({
         }
       }
     },
-    
+    // Removed invalid 'admin' property
     http: {
       // Allow requests from the frontend origin
       storeCors: process.env.STORE_CORS || "https://dev-virid-seven.vercel.app",
       adminCors: process.env.ADMIN_CORS || "http://localhost:7000",
-      authCors: process.env.AUTH_CORS || "http://localhost:3000",
+      authCors: process.env.AUTH_CORS || "http://localhost:3002",
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
     }
   },
   modules: [
-
+    {
+      resolve: '@medusajs/file-local',      // v2 local‑disk provider
+      options: {
+        upload_dir: 'static',               // keep your uploads in /static
+        backend_url: '/static'              // <─ this is the bit that removes the host
+        //   ↳ could also be 'https://api.my‑domain.com/static' if you prefer an absolute URL
+      }
+    },
     {
 
       resolve: "@medusajs/medusa/payment",
@@ -62,7 +69,8 @@ module.exports = defineConfig({
 
       }
 
-    }
+    },
+    
 
   ]
 })
