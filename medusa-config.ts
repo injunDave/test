@@ -38,14 +38,7 @@ module.exports = defineConfig({
     }
   },
   modules: [
-    {
-      resolve: '@medusajs/file-local',      // v2 local‑disk provider
-      options: {
-        upload_dir: 'static',               // keep your uploads in /static
-        backend_url: '/static'              // <─ this is the bit that removes the host
-        //   ↳ could also be 'https://api.my‑domain.com/static' if you prefer an absolute URL
-      }
-    },
+
     {
 
       resolve: "@medusajs/medusa/payment",
